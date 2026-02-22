@@ -1,0 +1,2 @@
+[functions.follow-manager]
+verify_jwt = true

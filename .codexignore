@@ -1,0 +1,28 @@
+# Environment files (keep templates tracked)
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Common private keys and cert/key stores
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.der
+*.crt
+*.cer
+
+# SSH and cloud credential directories
+.ssh/
+**/.ssh/
+.aws/
+**/.aws/
+
+# Tool-specific auth/config files that may contain tokens
+.npmrc
+**/.npmrc
