@@ -1,5 +1,7 @@
 # FollowManager
 
+https://jrod454.github.io/FollowManager/
+
 Discord follow-inventory dashboard with:
 - Frontend: React + Vite, hosted on GitHub Pages
 - Backend: one Supabase Edge Function (`follow-manager`)
