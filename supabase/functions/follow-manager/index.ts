@@ -150,15 +150,47 @@ function resolveAllowedOrigin(
   requestOrigin: string | null,
   allowedOrigins: string[]
 ): string | null {
-  if (allowedOrigins.length === 0) {
+  const normalizedAllowedOrigins = allowedOrigins
+    .map((origin) => normalizeOrigin(origin))
+    .filter((origin): origin is string => origin !== null);
+
+  if (normalizedAllowedOrigins.length === 0) {
+    return requestOrigin ?? "*";
+  }
+
+  if (normalizedAllowedOrigins.includes("*")) {
     return requestOrigin ?? "*";
   }
 
   if (!requestOrigin) {
-    return allowedOrigins[0] ?? null;
+    return normalizedAllowedOrigins[0] ?? null;
   }
 
-  return allowedOrigins.includes(requestOrigin) ? requestOrigin : null;
+  const normalizedRequestOrigin = normalizeOrigin(requestOrigin);
+  if (!normalizedRequestOrigin) {
+    return null;
+  }
+
+  return normalizedAllowedOrigins.includes(normalizedRequestOrigin)
+    ? requestOrigin
+    : null;
+}
+
+function normalizeOrigin(originValue: string): string | null {
+  const trimmed = originValue.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  if (trimmed === "*") {
+    return "*";
+  }
+
+  try {
+    return new URL(trimmed).origin;
+  } catch {
+    return trimmed.replace(/\/+$/, "");
+  }
 }
 
 function buildCorsHeaders(

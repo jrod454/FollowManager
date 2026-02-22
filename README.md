@@ -31,7 +31,7 @@ Required for function runtime:
 - `FOLLOW_MANAGER_DISCORD_GUILD_ID`
 - `FOLLOW_MANAGER_DISCORD_API_BASE_URL` (optional, defaults to Discord v10)
 - `FOLLOW_MANAGER_ALLOWED_USER_IDS` (comma-separated Supabase user UUIDs)
-- `FOLLOW_MANAGER_ALLOWED_ORIGINS` (comma-separated origins, include local + Pages URL)
+- `FOLLOW_MANAGER_ALLOWED_ORIGINS` (comma-separated origins, include local + Pages origin, e.g. `https://jrod454.github.io`)
 
 Shared (used by frontend and function runtime):
 - `VITE_FOLLOW_MANAGER_SUPABASE_URL`
