@@ -1,2 +1,2 @@
-[functions.follow-manager]
+[functions.sync-follow-manager-inventory]
 verify_jwt = true
